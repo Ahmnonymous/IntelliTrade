@@ -1,0 +1,8 @@
+websocket-client==1.2.1
+requests==2.26.0
+python-dotenv==0.19.1
+
+python -m venv env
+env\Scripts\activate
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
