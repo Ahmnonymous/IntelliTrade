@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Events</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .event {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>News Events</h1>
+    
+    <div id="news-events">
+        <!-- News events will be dynamically added here -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
+    <script>
+        var socket = io();  // Connect to the Socket.IO server
+
+        socket.on('news_event', function(data) {
+            var headline = data.headline;
+            var impact = data.impact;
+
+            var eventDiv = document.createElement("div");
+            eventDiv.className = "event";
+            eventDiv.innerHTML = "<strong>Headline:</strong> " + headline + "<br><strong>Impact:</strong> " + impact;
+
+            document.getElementById("news-events").appendChild(eventDiv);
+        });
+    </script>
+</body>
+</html>
